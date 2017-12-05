@@ -1,8 +1,8 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Random;
+
 public class testPairwise {
 
 	@Test
@@ -12,8 +12,18 @@ public class testPairwise {
 		assertEquals(test.pairwise_1("123"), pairwiseCompare("123"));
 		
 		//Stress test
-		
-		
+		Random rand = new Random();
+		String testNums;
+		for(int i = 0; i < 1000; i++){
+			testNums = "";
+			testNums = Integer.toString((rand.nextInt(10000000) + 99999999));
+			try{
+				assertEquals(test.pairwise_1(testNums), pairwiseCompare(testNums));
+			}
+			catch(Exception e){
+				System.out.println("Failed on string: " + testNums);
+			}
+		}
 				
 	}
 	
